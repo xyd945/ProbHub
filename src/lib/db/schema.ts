@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, timestamp, pgEnum, jsonb, integer, index, numeric } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, text, timestamp, pgEnum, jsonb, integer, index, uniqueIndex, numeric } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 
 // Enums
@@ -64,7 +64,8 @@ export const rawEvents = pgTable(
         createdAt: timestamp('created_at').notNull().defaultNow(),
     },
     (table) => ({
-        sourceExternalIdIdx: index('raw_events_source_external_id_idx').on(
+        // Unique constraint for deduplication
+        sourceExternalIdUnique: uniqueIndex('raw_events_source_external_id_unique').on(
             table.sourceId,
             table.externalId
         ),
@@ -98,7 +99,8 @@ export const problems = pgTable(
         updatedAt: timestamp('updated_at').notNull().defaultNow(),
     },
     (table) => ({
-        sourceExternalIdIdx: index('problems_source_external_id_idx').on(
+        // Unique constraint for deduplication
+        sourceExternalIdUnique: uniqueIndex('problems_source_external_id_unique').on(
             table.sourceId,
             table.externalId
         ),
