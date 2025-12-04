@@ -14,9 +14,12 @@ export default function TagFilter({ onFilterChange }: TagFilterProps) {
     useEffect(() => {
         async function fetchTags() {
             try {
-                const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
-                const res = await fetch(`${baseUrl}/api/tags`);
+                const res = await fetch('/api/tags');
+                if (!res.ok) {
+                    throw new Error('Failed to fetch tags');
+                }
                 const data = await res.json();
+                console.log('Fetched tags:', data.length); // Debug log
                 setTags(data);
             } catch (error) {
                 console.error('Error fetching tags:', error);
@@ -37,10 +40,10 @@ export default function TagFilter({ onFilterChange }: TagFilterProps) {
             <div className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="container mx-auto px-4 py-4">
                     <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-                        {[1, 2, 3, 4, 5].map((i) => (
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                             <div
                                 key={i}
-                                className="h-9 w-24 rounded-full bg-secondary/50 animate-pulse"
+                                className="h-9 w-24 rounded-full bg-secondary/50 animate-pulse flex-shrink-0"
                             />
                         ))}
                     </div>
@@ -68,8 +71,8 @@ export default function TagFilter({ onFilterChange }: TagFilterProps) {
                         All
                     </button>
 
-                    {/* Tag filters */}
-                    {tags.slice(0, 20).map((tag) => (
+                    {/* Tag filters - show ALL tags with horizontal scroll */}
+                    {tags.map((tag) => (
                         <button
                             key={tag.slug}
                             onClick={() => handleTagClick(tag.slug)}
@@ -85,6 +88,11 @@ export default function TagFilter({ onFilterChange }: TagFilterProps) {
                             #{tag.name}
                         </button>
                     ))}
+
+                    {/* Show tag count */}
+                    <div className="flex items-center px-3 text-xs text-muted-foreground flex-shrink-0">
+                        {tags.length} tags
+                    </div>
                 </div>
             </div>
         </div>
