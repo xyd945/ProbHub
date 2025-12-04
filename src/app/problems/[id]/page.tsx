@@ -33,7 +33,7 @@ export default async function ProblemDetailPage({
             <div className="max-w-4xl mx-auto">
                 {/* Back button */}
                 <a
-                    href="/problems"
+                    href="/"
                     className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
                 >
                     <svg
@@ -89,8 +89,8 @@ export default async function ProblemDetailPage({
                 )}
 
                 {/* Description */}
-                <div className="prose prose-lg dark:prose-invert max-w-none mb-8">
-                    <p className="text-lg leading-relaxed">{problem.description}</p>
+                <div className="mb-8">
+                    <p className="text-lg leading-relaxed text-foreground">{problem.description}</p>
                 </div>
 
                 {/* Source Link */}
