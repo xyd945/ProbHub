@@ -172,3 +172,48 @@ export type NewProblemTag = typeof problemTags.$inferInsert;
 
 export type ProblemSignal = typeof problemSignals.$inferSelect;
 export type NewProblemSignal = typeof problemSignals.$inferInsert;
+
+// Relations for Drizzle ORM queries
+import { relations } from 'drizzle-orm';
+
+export const problemsRelations = relations(problems, ({ one, many }) => ({
+    source: one(sources, {
+        fields: [problems.sourceId],
+        references: [sources.id],
+    }),
+    rawEvent: one(rawEvents, {
+        fields: [problems.rawEventId],
+        references: [rawEvents.id],
+    }),
+    problemTags: many(problemTags),
+    signals: many(problemSignals),
+}));
+
+export const problemTagsRelations = relations(problemTags, ({ one }) => ({
+    problem: one(problems, {
+        fields: [problemTags.problemId],
+        references: [problems.id],
+    }),
+    tag: one(tags, {
+        fields: [problemTags.tagId],
+        references: [tags.id],
+    }),
+}));
+
+export const tagsRelations = relations(tags, ({ many }) => ({
+    problemTags: many(problemTags),
+}));
+
+export const sourcesRelations = relations(sources, ({ many }) => ({
+    problems: many(problems),
+    rawEvents: many(rawEvents),
+}));
+
+export const rawEventsRelations = relations(rawEvents, ({ one, many }) => ({
+    source: one(sources, {
+        fields: [rawEvents.sourceId],
+        references: [sources.id],
+    }),
+    problems: many(problems),
+}));
+
