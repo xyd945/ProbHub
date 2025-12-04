@@ -15,7 +15,10 @@ async function getProblems(params: {
     if (params.page) searchParams.set('page', params.page.toString());
     searchParams.set('page_size', '20');
 
-    const url = `http://localhost:3000/api/problems?${searchParams.toString()}`;
+    // Use environment-aware base URL
+    const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
+
+    const url = `${baseUrl}/api/problems?${searchParams.toString()}`;
 
     const res = await fetch(url, {
         cache: 'no-store', // Always fetch fresh data
@@ -56,8 +59,8 @@ export default async function ProblemsPage({
                         <a
                             href="/problems?sort=new"
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${sort === 'new'
-                                    ? 'bg-primary text-primary-foreground'
-                                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                                ? 'bg-primary text-primary-foreground'
+                                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                                 }`}
                         >
                             Latest
@@ -65,8 +68,8 @@ export default async function ProblemsPage({
                         <a
                             href="/problems?sort=top"
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${sort === 'top'
-                                    ? 'bg-primary text-primary-foreground'
-                                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                                ? 'bg-primary text-primary-foreground'
+                                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                                 }`}
                         >
                             Top

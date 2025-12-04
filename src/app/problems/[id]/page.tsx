@@ -4,7 +4,10 @@ import { formatDistanceToNow } from "date-fns";
 import type { ProblemDetailResponse } from "@/types/api";
 
 async function getProblem(id: string): Promise<ProblemDetailResponse> {
-    const res = await fetch(`http://localhost:3000/api/problems/${id}`, {
+    // Use environment-aware base URL
+    const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
+
+    const res = await fetch(`${baseUrl}/api/problems/${id}`, {
         cache: 'no-store',
     });
 
