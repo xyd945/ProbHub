@@ -1,4 +1,4 @@
-# ProbHub - Problem Discovery Platform
+# ProbHub - Problems worth solving 💡
 
 Discover real problems people are discussing on the internet. ProbHub aggregates and normalizes problem discussions from Hacker News, StackExchange, GitHub, and more using AI-powered extraction.
 
