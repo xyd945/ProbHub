@@ -30,7 +30,7 @@ export default function ProblemsClient({ initialProblems }: ProblemsClientProps)
             <TagFilter onFilterChange={handleFilterChange} />
 
             {/* Main Content */}
-            <div className="container mx-auto px-4 pb-8">
+            <div className="container mx-auto px-4 pt-8 pb-8">
                 {filteredProblems.length === 0 ? (
                     <div className="text-center py-20">
                         <p className="text-lg text-muted-foreground mb-2">
