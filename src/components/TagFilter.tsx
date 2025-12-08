@@ -37,7 +37,7 @@ export default function TagFilter({ onFilterChange }: TagFilterProps) {
 
     if (loading) {
         return (
-            <div className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="container mx-auto px-4 py-4">
                     <div className="flex gap-2 overflow-x-auto scrollbar-hide">
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
@@ -53,7 +53,7 @@ export default function TagFilter({ onFilterChange }: TagFilterProps) {
     }
 
     return (
-        <div className="sticky top-16 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="sticky top-16 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto px-4 py-4">
                 <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
                     {/* All filter */}
