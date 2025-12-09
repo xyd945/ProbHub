@@ -31,3 +31,45 @@ export const HN_API = {
     maxConcurrentRequests: 5,
     rateLimit: 50, // calls per minute
 };
+
+export const STACKEXCHANGE_API = {
+    baseUrl: 'https://api.stackexchange.com',
+    version: process.env.STACKEXCHANGE_API_VERSION || '2.3',
+    apiKey: process.env.STACKEXCHANGE_API_KEY,
+
+    // Configurable limits
+    tier1Limit: parseInt(process.env.STACKEXCHANGE_TIER1_LIMIT || '20', 10),
+    tier2Limit: parseInt(process.env.STACKEXCHANGE_TIER2_LIMIT || '10', 10),
+
+    // Rate limiting (respects SE's limits)
+    maxConcurrentRequests: 5,
+    requestDelayMs: 100,
+
+    // Site configuration
+    sites: {
+        tier1: [
+            { slug: 'money', name: 'Personal Finance & Money' },
+            { slug: 'workplace', name: 'Workplace' },
+            { slug: 'interpersonal', name: 'Interpersonal Skills' },
+            { slug: 'parenting', name: 'Parenting' },
+            { slug: 'travel', name: 'Travel' },
+            { slug: 'diy', name: 'Home Improvement' },
+        ],
+        tier2: [
+            { slug: 'cooking', name: 'Cooking' },
+            { slug: 'fitness', name: 'Fitness' },
+            { slug: 'law', name: 'Law' },
+            { slug: 'ux', name: 'UX' },
+            { slug: 'bicycles', name: 'Bicycles' },
+            { slug: 'academia', name: 'Academia' },
+        ],
+    },
+
+    // Query parameters (extensible for future filtering)
+    defaultParams: {
+        sort: 'votes' as const,
+        order: 'desc' as const,
+        filter: 'withbody' as const, // Include question body
+        // Future: fromdate, todate can be added here
+    },
+};

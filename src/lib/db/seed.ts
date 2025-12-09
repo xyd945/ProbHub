@@ -21,10 +21,10 @@ export async function seedDatabase() {
             name: 'stackexchange',
             displayName: 'StackExchange',
             type: 'qa' as const,
-            status: 'paused' as const,
+            status: 'active' as const,
             metadata: {
                 apiBaseUrl: 'https://api.stackexchange.com/2.3',
-                description: 'Developer questions highlighting pain points and missing tools',
+                description: 'Real-world problems from 12 StackExchange sites covering personal finance, workplace, parenting, travel, and more',
             },
         },
         {
