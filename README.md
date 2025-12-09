@@ -4,10 +4,10 @@ Discover real problems people are discussing on the internet. ProbHub aggregates
 
 ## 🚀 Features
 
-- **Multi-Source Aggregation**: Ingests problems from Hacker News (v1), with StackExchange and GitHub coming soon
-- **AI-Powered Normalization**: Uses LLM to extract and structure problem statements
-- **Smart Search**: Full-text search with filtering by source, tags, and sorting options
-- **Modern UI**: Bold, minimal design with Tailwind CSS
+- **Multi-Source Aggregation**: Hacker News + StackExchange (12 sites including personal finance, workplace, parenting, travel, cooking, fitness, and more)
+- **AI-Powered Normalization**: Uses LLM to extract and structure real-world problems from discussions
+- **Smart Filtering**: Tag-based filtering with infinite scroll for seamless browsing
+- **Pinterest-Style UI**: Modern masonry grid layout with responsive design
 - **Automated Ingestion**: Vercel Cron jobs for scheduled data collection
 
 ## 🛠 Tech Stack
@@ -144,16 +144,40 @@ src/
 └── types/                # TypeScript type definitions
 ```
 
-## 🔮 Roadmap
+## 🎯 Milestones
 
-- [x] Phase 1: Foundation & Database Setup
-- [x] Phase 2: Basic UI & Landing Page
-- [ ] Phase 3: API Routes & Data Fetching
-- [ ] Phase 4: LLM Integration
-- [ ] Phase 5: Hacker News Connector
-- [ ] Phase 6: Vercel Cron Setup
-- [ ] Phase 7: StackExchange Connector
-- [ ] Phase 8: GitHub Issues Connector
+### ✅ Completed
+
+- **Multi-Source Integration**
+  - Hacker News connector (Ask HN posts)
+  - StackExchange connector (12 sites: personal finance, workplace, parenting, travel, cooking, fitness, law, UX, etc.)
+  
+- **Core Features**
+  - AI-powered problem extraction using LLM
+  - Pinterest-style masonry grid layout
+  - Tag-based filtering system
+  - Infinite scroll with skeleton loading
+  - Automated ingestion via Vercel Cron
+
+- **UI/UX**
+  - Responsive design (mobile, tablet, desktop)
+  - Hero section highlighting value proposition
+  - Clean, modern interface with dark mode support
+
+### 🚧 In Progress
+
+- Search functionality (full-text search)
+- Sorting options (Top, New, Trending)
+
+### 📅 Future Features
+
+- reddit connector (api request is pending)
+- User accounts & problem bookmarking
+- Problem voting & comments
+- Advanced filtering (date range, engagement metrics)
+- Weekly digest emails
+- API for third-party integrations
+- Other cool ideas, please raise an issue!
 
 ## 📄 License
 
